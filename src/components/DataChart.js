@@ -32,9 +32,17 @@ export const options = {
   scales: {
     x: {
       stacked: true,
+      title: {
+        display: true,
+        text: "User ID",
+      },
     },
     y: {
       stacked: true,
+      title: {
+        display: true,
+        text: "Reward Points",
+      },
     },
   },
 };
