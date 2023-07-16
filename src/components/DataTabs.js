@@ -33,7 +33,7 @@ function a11yProps(index) {
   };
 }
 
-export function DataTabs({
+export default function DataTabs({
   getDataByPoints,
   handleTabChange,
   tab,

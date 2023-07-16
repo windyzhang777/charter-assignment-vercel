@@ -1,7 +1,7 @@
 import { Alert, Box, LinearProgress } from "@mui/material";
 import { useCallback, useEffect, useState } from "react";
-import { DataChart } from "./components/DataChart";
-import { DataTabs } from "./components/DataTabs";
+import DataChart from "./components/DataChart";
+import DataTabs from "./components/DataTabs";
 import { useGetTransaction } from "./hooks/useGetTransaction";
 import { useTransactionContext } from "./hooks/useTransactionContext";
 
@@ -18,11 +18,11 @@ export default function App() {
   const getDataByPoints = useCallback(
     (userId) => {
       const userData = transaction?.filter(
-        (d) => d.id === userId
+        (d) => d.userId === userId
       );
       const monthMap = { march: 0, april: 0, may: 0 };
       const total = userData?.reduce((acc, cur) => {
-        const month = new Date(cur.createdat)
+        const month = new Date(cur.createdAt)
           .toLocaleString("en-US", { month: "long" })
           .toLocaleLowerCase();
         if (!monthMap[month]) {

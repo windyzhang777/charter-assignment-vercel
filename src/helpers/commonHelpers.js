@@ -12,7 +12,7 @@ export const calcPointsPerTx = (tx) => {
 
 export const sortUsers = (data) => {
   const users = Array.from(
-    new Set(data?.map((d) => d.id)).values()
+    new Set(data?.map((d) => d.userId)).values()
   );
   users?.sort((a, b) => a - b);
   return users;

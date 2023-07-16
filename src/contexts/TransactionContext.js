@@ -10,7 +10,6 @@ const transactionReducer = (state, action) => {
         ...d,
         points: calcPointsPerTx(d.amount),
       }));
-      updated?.sort((a, b) => a.id < b.id);
       return { ...state, transaction: updated };
     default:
       return state;

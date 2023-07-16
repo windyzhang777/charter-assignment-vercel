@@ -47,7 +47,7 @@ export const options = {
   },
 };
 
-export function DataChart({ getDataByPoints }) {
+export default function DataChart({ getDataByPoints }) {
   const { transaction } = useTransactionContext();
 
   const handleDataTransform = useCallback(
