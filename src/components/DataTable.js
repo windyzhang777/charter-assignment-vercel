@@ -49,6 +49,12 @@ export function DataTable({ isTx, getDataByPoints }) {
         slots={{ toolbar: GridToolbar }}
         initialState={{
           ...data.initialState,
+          columns: {
+            ...data.initialState?.columns,
+            columnVisibilityModel: {
+              id: isTx ? false : true,
+            },
+          },
           pagination: { paginationModel: { pageSize: 10 } },
         }}
         pageSizeOptions={[10, 25, 50, 100]}
