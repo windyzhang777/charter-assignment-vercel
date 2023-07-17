@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
-import React, { useMemo } from "react";
+import React from "react";
 import { DataTable } from "./DataTable";
 
 const TABS = [
@@ -33,29 +33,9 @@ function a11yProps(index) {
   };
 }
 
-export default function DataTabs({
-  getDataByPoints,
-  handleTabChange,
-  tab,
-}) {
-  const table1 = useMemo(
-    () => (
-      <DataTable
-        isTx={true}
-        getDataByPoints={getDataByPoints}
-      />
-    ),
-    [getDataByPoints]
-  );
-  const table2 = useMemo(
-    () => (
-      <DataTable
-        isTx={false}
-        getDataByPoints={getDataByPoints}
-      />
-    ),
-    [getDataByPoints]
-  );
+export default function DataTabs({ handleTabChange, tab }) {
+  const table1 = <DataTable isTx={true} />;
+  const table2 = <DataTable isTx={false} />;
   return (
     <>
       <Box

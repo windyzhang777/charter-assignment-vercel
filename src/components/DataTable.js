@@ -10,22 +10,26 @@ import {
   TABLE1_COLUMNS,
   TABLE2_COLUMNS,
 } from "../constants";
-import { sortUsers } from "../helpers/commonHelpers";
+import {
+  sortUsers,
+  getDataByPoints,
+} from "../helpers/commonHelpers";
 import { useTransactionContext } from "../hooks/useTransactionContext";
 
-export function DataTable({ isTx, getDataByPoints }) {
+export function DataTable({ isTx }) {
   const [data, setData] = useState([]);
   const { transaction } = useTransactionContext();
+
   const handleDataTransform = useCallback(
     (data) => {
       const allUserIds = sortUsers(data);
       const res = [];
       for (const id of allUserIds) {
-        res.push(getDataByPoints(id));
+        res.push(getDataByPoints(id, transaction));
       }
       return res;
     },
-    [getDataByPoints]
+    [transaction]
   );
 
   const tableHeading = useMemo(

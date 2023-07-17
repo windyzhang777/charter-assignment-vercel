@@ -1,5 +1,5 @@
-import { Alert, Box, LinearProgress } from "@mui/material";
-import { useCallback, useEffect, useState } from "react";
+import { Box, LinearProgress } from "@mui/material";
+import { useEffect, useState } from "react";
 import DataChart from "./components/DataChart";
 import DataTabs from "./components/DataTabs";
 import { useGetTransaction } from "./hooks/useGetTransaction";
@@ -15,33 +15,6 @@ export default function App() {
     getTransaction();
   }, [getTransaction]);
 
-  const getDataByPoints = useCallback(
-    (userId) => {
-      const userData = transaction?.filter(
-        (d) => d.userId === userId
-      );
-      const monthMap = { march: 0, april: 0, may: 0 };
-      const total = userData?.reduce((acc, cur) => {
-        const month = new Date(cur.createdAt)
-          .toLocaleString("en-US", { month: "long" })
-          .toLocaleLowerCase();
-        if (!monthMap[month]) {
-          monthMap[month] = cur.points;
-        } else {
-          monthMap[month] += cur.points;
-        }
-        acc += cur.points;
-        return acc;
-      }, 0);
-      return {
-        id: userId,
-        total,
-        ...monthMap,
-      };
-    },
-    [transaction]
-  );
-
   const handleTabChange = (e, tab) => {
     setTab(tab);
   };
@@ -50,10 +23,9 @@ export default function App() {
     <LinearProgress />
   ) : (
     <Box m={1} sx={{ maxWidth: "800px" }}>
-      {error && <Alert severity="error">{error}</Alert>}
-      <DataChart getDataByPoints={getDataByPoints} />
+      {/* {error && <Alert severity="error">{error}</Alert>} */}
+      <DataChart />
       <DataTabs
-        getDataByPoints={getDataByPoints}
         handleTabChange={handleTabChange}
         tab={tab}
       />
