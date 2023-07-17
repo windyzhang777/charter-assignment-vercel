@@ -7,8 +7,7 @@ import { useTransactionContext } from "./hooks/useTransactionContext";
 
 export default function App() {
   const [tab, setTab] = useState(0);
-  const { isLoading, error, getTransaction } =
-    useGetTransaction();
+  const { isLoading, getTransaction } = useGetTransaction();
   const { transaction } = useTransactionContext();
 
   useEffect(() => {
