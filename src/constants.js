@@ -30,7 +30,9 @@ export const TABLE1_COLUMNS = [
     headerAlign: "right",
     align: "right",
     renderCell: ({ row: { createdAt } }) => (
-      <Box>{createdAt.replace(/T/g, " ").slice(0, -1)}</Box>
+      <Box>
+        {createdAt?.replace(/T/g, " ").slice(0, -1)}
+      </Box>
     ),
   },
   {
