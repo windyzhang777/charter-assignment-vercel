@@ -1,5 +1,6 @@
 import { useCallback, useState } from "react";
 import { useTransactionContext } from "./useTransactionContext";
+import transactionJSON from "../data/transaction.json";
 
 export const useGetTransaction = () => {
   const [isLoading, setIsLoading] = useState(null);
@@ -21,7 +22,11 @@ export const useGetTransaction = () => {
       })
       .catch((error) => {
         setIsLoading(false);
-        setError(error);
+        setError("fetch transaction failed");
+        dispatch({
+          type: "GET_ALL_TX",
+          payload: transactionJSON.transaction,
+        });
       });
   }, [dispatch]);
 
